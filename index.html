@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcetto Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">⚽</div>
+          <div>
+            <h1>Calcetto</h1>
+            <p>Manager</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-btn active" data-section="players">Giocatori</button>
+          <button class="nav-btn" data-section="teams">Squadre</button>
+          <button class="nav-btn" data-section="preMatch">Pre-partita</button>
+          <button class="nav-btn" data-section="postMatch">Post-partita</button>
+          <button class="nav-btn" data-section="stats">Statistiche</button>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section id="players" class="panel active">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Anagrafica</p>
+              <h2>Giocatori</h2>
+            </div>
+          </div>
+
+          <form id="playerForm" class="form-grid">
+            <label>
+              Nome
+              <input type="text" id="playerName" placeholder="Es. Marco" required />
+            </label>
+            <label>
+              Ruolo
+              <select id="playerRole">
+                <option value="Ruolo libero">Ruolo libero</option>
+                <option value="Difensore">Difensore</option>
+                <option value="Centrocampista">Centrocampista</option>
+                <option value="Attaccante">Attaccante</option>
+                <option value="Portiere">Portiere</option>
+              </select>
+            </label>
+            <label>
+              Overall
+              <input type="number" id="playerOverall" min="1" max="99" value="70" required />
+            </label>
+            <label>
+              Disponibile
+              <select id="playerAvailable">
+                <option value="true">Sì</option>
+                <option value="false">No</option>
+              </select>
+            </label>
+            <label class="full-width">
+              Note
+              <input type="text" id="playerNotes" placeholder="Es. ottimo in fase difensiva" />
+            </label>
+
+            <button type="submit" class="primary-btn">Aggiungi giocatore</button>
+          </form>
+
+          <div class="list-header">
+            <h3>Lista giocatori</h3>
+            <span id="playersCount" class="badge"></span>
+          </div>
+          <div id="playersList" class="player-grid"></div>
+        </section>
+
+        <section id="teams" class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Organizzazione</p>
+              <h2>Squadre equilibrate</h2>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <label>
+              Numero di squadre
+              <select id="teamCountSelect">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </label>
+            <button id="generateTeamsBtn" class="primary-btn">Genera squadre</button>
+          </div>
+
+          <div id="teamsPreview" class="team-grid"></div>
+        </section>
+
+        <section id="preMatch" class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Preparazione</p>
+              <h2>Pre-partita</h2>
+            </div>
+          </div>
+
+          <div class="pre-match-layout">
+            <div class="match-card">
+              <h3>Disponibili</h3>
+              <div id="preMatchPlayers" class="mini-list"></div>
+            </div>
+
+            <div class="match-card">
+              <h3>Squadra ideale</h3>
+              <div id="preMatchSummary" class="summary-box"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="postMatch" class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Storico</p>
+              <h2>Post-partita</h2>
+            </div>
+          </div>
+
+          <form id="matchForm" class="match-form">
+            <div class="form-grid compact">
+              <label>
+                Data
+                <input type="date" id="matchDate" required />
+              </label>
+              <label>
+                Avversario
+                <input type="text" id="matchOpponent" placeholder="Es. Dragon" required />
+              </label>
+              <label>
+                Risultato squadra
+                <input type="number" id="matchScoreHome" min="0" value="0" required />
+              </label>
+              <label>
+                Risultato avversari
+                <input type="number" id="matchScoreAway" min="0" value="0" required />
+              </label>
+            </div>
+
+            <div class="ratings-table-wrap">
+              <h3>Valutazioni giocatori</h3>
+              <div id="ratingsTable" class="ratings-table"></div>
+            </div>
+
+            <label class="full-width">
+              Note partita
+              <textarea id="matchNotes" rows="4" placeholder="Es. ottima pressione alta, bisogna migliorare il possesso in uscita"></textarea>
+            </label>
+
+            <button type="submit" class="primary-btn">Salva partita</button>
+          </form>
+        </section>
+
+        <section id="stats" class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Report</p>
+              <h2>Statistiche</h2>
+            </div>
+          </div>
+
+          <div id="statsCards" class="stats-grid"></div>
+          <div class="list-header">
+            <h3>Ultime partite</h3>
+          </div>
+          <div id="matchesList" class="matches-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
